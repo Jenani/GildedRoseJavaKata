@@ -3,12 +3,10 @@ package com.pbz4esilv.gildedrose;
 public class Inventory {
 
     private Item[] items;
-
     public Inventory(Item[] items) {
         super();
         this.items = items;
     }
-
     public Inventory() {
         super();
         items = new Item[]{
@@ -18,8 +16,9 @@ public class Inventory {
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Conjured Mana Cake", 3, 6)
+                // ajouter un nouvel items
+                // new Item("element1, element2", 0, 80)
         };
-
     }
 
     public void updateQuality() {
@@ -34,27 +33,23 @@ public class Inventory {
             } else {
                 if (items[i].getQuality() < 50) {
                     items[i].setQuality(items[i].getQuality() + 1);
-
                     if (items[i].getName() == "Backstage passes to a TAFKAL80ETC concert") {
                         if (items[i].getSellIn() < 11) {
                             if (items[i].getQuality() < 50) {
-                                items[i].setQuality(items[i].getQuality() + 1);
+                                items[i].setQuality(items[i].getQuality() + 1); // doubler ?
                             }
                         }
-
                         if (items[i].getSellIn() < 6) {
                             if (items[i].getQuality() < 50) {
-                                items[i].setQuality(items[i].getQuality() + 1);
+                                items[i].setQuality(items[i].getQuality() + 1); // tripler ?
                             }
                         }
                     }
                 }
             }
-
             if (items[i].getName() != "Sulfuras, Hand of Ragnaros") {
                 items[i].setSellIn(items[i].getSellIn() - 1);
             }
-
             if (items[i].getSellIn() < 0) {
                 if (items[i].getName() != "Aged Brie") {
                     if (items[i].getName() != "Backstage passes to a TAFKAL80ETC concert") {
